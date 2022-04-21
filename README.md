@@ -146,7 +146,7 @@ ApiResponse<OrderQueryResponse> orderQueryResponseApiResponse = client.queryOrde
 </details>
 
 
-### 提前
+### 提現
 #### 提現請求下單
 ```java
 CreatePayoutOrderRequest createPayoutOrderRequest = new CreatePayoutOrderRequest();
