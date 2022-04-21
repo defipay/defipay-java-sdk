@@ -1,6 +1,6 @@
-# Cobo Java API
+# Defipay Java API
 
-defipay-java-api 是一个轻量级的 Java 库，用于与[Defipay Custody API](http://doc.defipay.biz/)交互，提供完整的 API 覆盖。
+defipay-java-api 是一个轻量级的 Java 库，用于与[Defipay API](http://doc.defipay.biz/)交互，提供完整的 API 覆盖。
 
 
 * [安装](#安装)
@@ -83,7 +83,7 @@ maven:
 
 #### 生成密钥对
 ```java
-import com.defipay.custody.api.client.impl.LocalSigner;
+import LocalSigner;
 
 String[] key = LocalSigner.generateKeyPair();
 Stirng secretKey = key[0];
@@ -95,11 +95,11 @@ apiKey的使用方法请参考[链接](http://doc.defipay.biz/index.html#title1_
 这些可以通过相应的工厂方法实例化 `DefipayApiClientFactory`
 
 ```java
-import ccom.defipay.custody.api.client.DefipayApiClientFactory;
-import ccom.defipay.custody.api.client.DefipayApiRestClient;
-import ccom.defipay.custody.api.client.config.DefipayApiConfig;
-import ccom.defipay.custody.api.client.config.Env;
-import ccom.defipay.custody.api.client.impl.LocalSigner;
+import ccom.defipay.api.client.DefipayApiClientFactory;
+import ccom.defipay.api.client.DefipayApiRestClient;
+import ccom.defipay.api.client.config.DefipayApiConfig;
+import ccom.defipay.api.client.config.Env;
+import ccom.defipay.api.client.impl.LocalSigner;
 
 DefipayApiRestClient client = DefipayApiClientFactory.newInstance(
                 new LocalSigner(apiSecret),
@@ -117,7 +117,7 @@ DefipayApiRestClient client = DefipayApiClientFactory.newInstance(
 
 ```java
 
-import ccom.defipay.custody.api.client.ApiSigner;
+import com.defipay.api.client.ApiSigner;
 new ApiSigner() {
     @Override
     public String sign(byte[] message) {
@@ -142,7 +142,6 @@ request.setAmount("0.01");
 request.setCurrency("ETH");
 request.setMemberTransNo("testasdafasf001");
 request.setTokenIds("2");
-request.setMakingUp(Boolean.TRUE);
 ApiResponse<CreateOrderResponse> order = client.createOrder(request);
 ```
 <details>
