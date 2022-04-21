@@ -28,17 +28,6 @@ defipay-java-api 是一個輕量級的 Java 庫，用于與[Defipay API](http://
 
 步驟 1. 將 JitPack 存儲庫添加到您的構建文件
 
-gradle:
-
-```
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
-
 maven:
 
 ```
@@ -49,6 +38,20 @@ maven:
     </repository>
 </repositories>
 ```
+
+步驟 2. 添加依賴項
+
+maven:
+
+```
+<dependency>
+    <groupId>com.github.CoboCustody</groupId>
+    <artifactId>cobo-java-api</artifactId>
+    <version>v0.29</version>
+</dependency>
+```
+
+
 
 ## 測試
 
