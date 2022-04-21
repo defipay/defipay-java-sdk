@@ -28,8 +28,8 @@ public class DefipayApiRestClientImpl implements DefipayApiRestClient {
     }
 
     @Override
-    public ApiResponse<OrderQueryResponse> queryOrder(OrderQueryRequest request) {
-        return executeSync(defipayApiService.queryOrder(request.getMemberTransNo(), request.getTransNo()));
+    public ApiResponse<OrderQueryResponse> queryOrder(String transNo) {
+        return executeSync(defipayApiService.queryOrder(transNo));
     }
 
     @Override
@@ -39,13 +39,8 @@ public class DefipayApiRestClientImpl implements DefipayApiRestClient {
     }
 
     @Override
-    public ApiResponse<PayoutOrderQueryResponse> queryPayoutOrder(PayoutOrderQueryRequest request) {
-        return executeSync(defipayApiService.queryPayoutOrder(request.getMemberTransNo(), request.getTransNo()));
-    }
-
-    @Override
-    public ApiResponse<RateDTO> queryRate(RateQueryRequest request) {
-        return executeSync(defipayApiService.queryRate(request.getBase() ,request.getQuote()));
+    public ApiResponse<PayoutOrderQueryResponse> queryPayoutOrder(String transNo) {
+        return executeSync(defipayApiService.queryPayoutOrder(transNo));
     }
 
     @Override
@@ -61,6 +56,16 @@ public class DefipayApiRestClientImpl implements DefipayApiRestClient {
     @Override
     public ApiResponse<List<MemberUserVirtualAccountInfoResponse>> queryCryptoAmount() {
         return executeSync(defipayApiService.queryCryptoAmount());
+    }
+
+    @Override
+    public ApiResponse<List<OrderQueryResponse>> queryOrderList(Integer offset, Integer limit) {
+        return executeSync(defipayApiService.queryOrderList(offset, limit));
+    }
+
+    @Override
+    public ApiResponse<OrderQueryResponse> getOrderDetail(Long id) {
+        return executeSync(defipayApiService.getOrderDetail(id));
     }
 
 }

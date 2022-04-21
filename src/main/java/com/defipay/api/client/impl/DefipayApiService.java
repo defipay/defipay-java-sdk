@@ -22,7 +22,7 @@ public interface DefipayApiService {
 
     @FormUrlEncoded
     @POST("/v1/external/pay/query")
-    Call<ApiResponse<OrderQueryResponse>> queryOrder(@Field("memberTransNo") String memberTransNo, @Field("transNo") String transNo);
+    Call<ApiResponse<OrderQueryResponse>> queryOrder(@Field("transNo") String transNo);
 
     @FormUrlEncoded
     @POST("/v1/external/payout/create")
@@ -34,11 +34,7 @@ public interface DefipayApiService {
 
     @FormUrlEncoded
     @POST("/v1/external/payout/query")
-    Call<ApiResponse<PayoutOrderQueryResponse>> queryPayoutOrder(@Field("memberTransNo") String memberTransNo, @Field("transNo") String transNo);
-
-    @FormUrlEncoded
-    @POST("/v1/external/rate/query")
-    Call<ApiResponse<RateDTO>> queryRate(@Field("base") String base , @Field("quote") String quote);
+    Call<ApiResponse<PayoutOrderQueryResponse>> queryPayoutOrder(@Field("transNo") String transNo);
 
     @FormUrlEncoded
     @POST("/v1/external/billCurrency/query")
@@ -50,4 +46,11 @@ public interface DefipayApiService {
 
     @GET("/v1/external/account/query")
     Call<ApiResponse<List<MemberUserVirtualAccountInfoResponse>>> queryCryptoAmount();
+
+    @FormUrlEncoded
+    @POST("/v1/external/order/list")
+    Call<ApiResponse<List<OrderQueryResponse>>> queryOrderList(@Field("offset") Integer offset , @Field("limit") Integer limit);
+
+    @GET("/v1/external/order/getDetail")
+    Call<ApiResponse<OrderQueryResponse>> getOrderDetail(@Query("id") Long id);
 }

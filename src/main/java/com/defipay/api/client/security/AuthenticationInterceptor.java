@@ -95,6 +95,7 @@ public class AuthenticationInterceptor implements Interceptor {
         }
         String nonce = String.valueOf(System.currentTimeMillis());
         String content = method + "|" + path + "|" + nonce + "|" + body;
+        System.out.println(content);
         String sig = signer.sign(content.getBytes());
 
         newRequestBuilder.addHeader(DefipayApiConstants.BIZ_API_KEY, apiKey)
