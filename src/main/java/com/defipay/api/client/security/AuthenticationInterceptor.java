@@ -79,6 +79,9 @@ public class AuthenticationInterceptor implements Interceptor {
         //POST|/v1/custody/test/|1537498830736|amount=100.0&price=100.0&side=buy&symbol=btcusdt&type=limit
         String method = original.method();
         String path = pathSegmentsToString(original.url().pathSegments());
+        if(path.contains("/api-service")){
+            path = path.replace("/api-service","");
+        }
         String body = "";
         if ("GET".equals(method)) {
             HttpUrl url = original.url();
@@ -93,6 +96,7 @@ public class AuthenticationInterceptor implements Interceptor {
         } else {
             throw new RuntimeException("not supported http method");
         }
+
         String nonce = String.valueOf(System.currentTimeMillis());
         String content = method + "|" + path + "|" + nonce + "|" + body;
         System.out.println(content);
