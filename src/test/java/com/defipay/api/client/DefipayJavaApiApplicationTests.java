@@ -7,13 +7,16 @@ import com.defipay.api.client.domain.response.*;
 import com.defipay.api.client.domain.response.external.ChainTokenInfoDTO;
 import com.defipay.api.client.domain.response.external.CoinApiAssetInfoDTO;
 import com.defipay.api.client.impl.LocalSigner;
+import com.defipay.api.client.security.AuthenticationInterceptor;
 import junit.framework.TestCase;
+import retrofit2.Retrofit;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class DefipayJavaApiApplicationTests extends TestCase {
 
-    private final String apiSecret = "303e020100301006072a8648ce3d020106052b8104000a0427302502010104204d1ec99a93307841e23d1ed5cdd149a1eea7a77aaec6a083e7a62480c8cf8851";
+    private final String apiSecret = "2f4aa1551067f7bf50c350f923a3da6cc3e6ba5138f1c743b6f65e6e6b2e78f4";
     private DefipayApiRestClient client;
 
     public void setUp() throws Exception {
@@ -87,5 +90,13 @@ public class DefipayJavaApiApplicationTests extends TestCase {
     public void testQueryCryptoAmount(){
         ApiResponse<List<MemberUserVirtualAccountInfoResponse>> listApiResponse2 = client.queryCryptoAmount();
         System.out.println(listApiResponse2);
+    }
+    public void testAdmin(){
+        LocalSigner localSigner = new LocalSigner("2f4aa1551067f7bf50c350f923a3da6cc3e6ba5138f1c743b6f65e6e6b2e78f4");
+        String publicKey = localSigner.getPublicKey();
+        System.out.println(publicKey);
+        String content = "POST|/v1/external/token/query|1650779011717|limit=1&offset=10";
+        String sign = localSigner.sign(content.getBytes());
+        System.out.println(sign);
     }
 }
