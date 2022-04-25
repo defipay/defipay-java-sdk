@@ -5,6 +5,7 @@ import com.defipay.api.client.ApiSigner;
 import okhttp3.*;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.*;
 
@@ -50,7 +51,7 @@ public class AuthenticationInterceptor implements Interceptor {
         StringBuffer sb = new StringBuffer();
         params.forEach((s, o) -> {
             try {
-                sb.append(s).append("=").append(URLEncoder.encode(String.valueOf(o), "UTF-8")).append("&");
+                sb.append(s).append("=").append(URLDecoder.decode(String.valueOf(o), "UTF-8")).append("&");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
