@@ -1,6 +1,6 @@
 # Defipay Java API
 
-defipay-java-api 是一個輕量級的 Java 庫，用于與[Defipay API](http://doc.defipay.biz/)交互，提供完整的 API 覆蓋。
+defipay-java-api 是一個輕量級的 Java 庫，用於與[Defipay API](http://doc.defipay.biz/)交互，提供完整的 API 覆蓋。
 
 
 * [安裝](#安裝)
@@ -23,6 +23,8 @@ defipay-java-api 是一個輕量級的 Java 庫，用于與[Defipay API](http://
      * [商戶賬戶余額查詢](#商戶賬戶余額查詢)
      * [支持賬單幣種查詢](#支持賬單幣種查詢)
      * [支持支付幣種查詢](#支持支付幣種查詢)
+  * [匯率查詢](#匯率查詢)
+     * [幣種匯率查詢](#幣種匯率查詢)
 
 ## 安裝
 
@@ -118,12 +120,11 @@ new ApiSigner() {
 #### 充值請求下單
 ```java
 CreateOrderRequest request = new CreateOrderRequest();
-request.setNotifyUrl("www.baidu.com");
-request.setReturnUrl("www.baidu.com");
+request.setNotifyUrl("http://xcsewvb.ao/nhhcn");
+request.setReturnUrl("http://xcsewvb.ao/nhhcn");
 request.setAmount("0.01");
 request.setCurrency("ETH");
 request.setMemberTransNo("testasdafasf001");
-request.setTokenIds("2");
 ApiResponse<CreateOrderResponse> order = client.createOrder(request);
 ```
 <details>
@@ -153,8 +154,7 @@ ApiResponse<OrderQueryResponse> orderQueryResponseApiResponse = client.queryOrde
 #### 提現請求下單
 ```java
 CreatePayoutOrderRequest createPayoutOrderRequest = new CreatePayoutOrderRequest();
-createPayoutOrderRequest.setNotifyUrl("www.baidu.com");
-createPayoutOrderRequest.setPayAmount("0.01");
+createPayoutOrderRequest.setNotifyUrl("http://xcsewvb.ao/nhhcn");
 createPayoutOrderRequest.setAmount("0.01");
 createPayoutOrderRequest.setCurrency("ETH");
 createPayoutOrderRequest.setMemberTransNo("testasdafasf002");
@@ -248,6 +248,21 @@ ApiResponse<List<ChainTokenInfoDTO>> listApiResponse1 = client.queryPayCurrency(
 
 ```java
 [ChainTokenInfoDTO{id=1, name='BTC', displayName='BTC', shortName='BTC', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/8f6e5e2382f94028b87307ad5c73c52e.png', chainAssertId='', chainAssertDecimal='6'}, ChainTokenInfoDTO{id=2, name='ETH', displayName='ETH', shortName='ETH', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/ba40da70bed74489a7ed6adaed495763.png', chainAssertId='', chainAssertDecimal='18'}, ChainTokenInfoDTO{id=3, name='Tether', displayName='USDT-ERC20', shortName='USDT', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/1b88c0c2dba04080bd3165843de3ffae.png', chainAssertId='0xdac17f958d2ee523a2206206994597c13d831ec7', chainAssertDecimal='6'}, ChainTokenInfoDTO{id=4, name='Binance Coin', displayName='BNB', shortName='BNB', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/6300d391da1642c58c6673f32235db89.png', chainAssertId='null', chainAssertDecimal='18'}, ChainTokenInfoDTO{id=5, name='USDC', displayName='USDC-ERC20', shortName='USDC', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/b5afa9c1d46842cea775d3e63c9287b7.png', chainAssertId='0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', chainAssertDecimal='6'}, ChainTokenInfoDTO{id=6, name='Ripple', displayName='XRP-BEP20', shortName='XRP', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/7df1c4bc20054894b52b4aa6a7ae1e81.png', chainAssertId='0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe', chainAssertDecimal='18'}, ChainTokenInfoDTO{id=7, name='Cardano', displayName='ADA-BEP20', shortName='ADA', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/35d6f3167e9c4a9dae0ef34c50a1deb0.png', chainAssertId='0x3ee2200efb3400fabb9aacf31297cbdd1d435d47', chainAssertDecimal='18'}, ChainTokenInfoDTO{id=8, name='Solana', displayName='SOL', shortName='SOL', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/068abeb1076c40189d64c69cf70ed6e6.png', chainAssertId='null', chainAssertDecimal='18'}, ChainTokenInfoDTO{id=9, name='Luna Coin', displayName='LUNA', shortName='LUNA', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/a8a96dd9240c425291bb87178aae935c.png', chainAssertId='null', chainAssertDecimal='18'}, ChainTokenInfoDTO{id=10, name='AVAX', displayName='AVAX-C', shortName='AVAX', logoUrl='https://defipay-test.oss-cn-hangzhou.aliyuncs.com/defipay_v_1.0/62f25f5cf608415587a7cda95d9238c0.png', chainAssertId='null', chainAssertDecimal='18'}]
+```
+</details>
+
+
+### 匯率查詢
+#### 幣種匯率查詢
+```java
+ApiResponse<RateDTO> rateDTOApiResponse = client.queryRate("ETH", "USDT");
+```
+<details>
+<summary>響應視圖</summary>
+
+
+```java
+RateDTO{rate='2941.9196987295191192656236054', rateTime=1651723212}
 ```
 </details>
 

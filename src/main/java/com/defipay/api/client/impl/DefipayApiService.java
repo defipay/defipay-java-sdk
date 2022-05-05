@@ -53,4 +53,8 @@ public interface DefipayApiService {
 
     @GET("/api-service/v1/external/order/getDetail")
     Call<ApiResponse<OrderQueryResponse>> getOrderDetail(@Query("id") Long id);
+
+    @FormUrlEncoded
+    @POST("/api-service/v1/external/rate/query")
+    Call<ApiResponse<RateDTO>> queryRate(@Field("base") String base , @Field("quote") String quote);
 }

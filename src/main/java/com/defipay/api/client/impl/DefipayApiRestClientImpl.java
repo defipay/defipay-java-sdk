@@ -68,4 +68,9 @@ public class DefipayApiRestClientImpl implements DefipayApiRestClient {
         return executeSync(defipayApiService.getOrderDetail(id));
     }
 
+    @Override
+    public ApiResponse<RateDTO> queryRate(String base, String quote) {
+        return executeSync(defipayApiService.queryRate(base, quote));
+    }
+
 }

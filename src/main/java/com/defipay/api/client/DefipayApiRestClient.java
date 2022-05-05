@@ -5,8 +5,6 @@ import com.defipay.api.client.domain.request.*;
 import com.defipay.api.client.domain.response.*;
 import com.defipay.api.client.domain.response.external.ChainTokenInfoDTO;
 import com.defipay.api.client.domain.response.external.CoinApiAssetInfoDTO;
-import retrofit2.Call;
-import retrofit2.http.*;
 
 import java.util.List;
 
@@ -30,4 +28,6 @@ public interface DefipayApiRestClient {
      ApiResponse<List<OrderQueryResponse>> queryOrderList(Integer offset, Integer limit);
 
      ApiResponse<OrderQueryResponse> getOrderDetail(Long id);
+
+     ApiResponse<RateDTO> queryRate(String base , String quote);
 }

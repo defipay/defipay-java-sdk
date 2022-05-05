@@ -6,13 +6,40 @@ plugins {
 }
 
 publishing {
+    // 发布
     publications {
-        maven(MavenPublication) {
+        mavenJava(MavenPublication) {
+            //指定group/artifact/version信息
             groupId = 'com.defipay'
-            artifactId = 'defipay-java-api'
+            artifactId = 'api-core'
             version = '1.0'
+            // components.java jar包
+            // components.web war包
             from components.java
+
+            // 增加 sourcesJar、javadocJar 任务
+//            artifact sourcesJar
+//            artifact javadocJar
         }
+    }
+    // 发布仓库
+    repositories {
+
+        // 本地仓库位于USER_HOME/.m2/repository
+        //
+        mavenLocal()
+        // 其他maven仓库
+        maven { url uri('/Users/h__d/Desktop/1') }
+        // aliyun镜像仓库
+        //         maven {
+        //             // 凭证
+        //             credentials {
+        //                 username 'username' // 仓库发布用户名
+        //                 password 'password' // 仓库发布用户密码
+        //             }
+        //             // 地址
+        //             url 'https://maven.aliyun.com/nexus/content/groups/public/'
+        //         }
     }
 }
 
@@ -38,8 +65,6 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.2'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
-    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.7'
     testImplementation  group: 'junit', name: 'junit', version: '4.12'
-
 }
 

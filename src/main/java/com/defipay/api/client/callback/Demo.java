@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Demo {
     private static final String defipayPubKey = "032f45930f652d72e0c90f71869dfe9af7d713b1f67dc2f7cb51f9572778b9c876";
-    static RouteHandler custodyCallback = ctx -> {
+    static RouteHandler defipayCallback = ctx -> {
         String timestamp = ctx.header("Biz-Timestamp");
         String signature = ctx.header("Biz-Resp-Signature");
         boolean verifyResult = false;
@@ -29,7 +29,7 @@ public class Demo {
     public static void main(String[] args) {
         Blade.of().listen(9000)
                 .get("/", ctx -> ctx.text("ok!"))
-                .post("/custody_callback", custodyCallback).start();
+                .post("/custody_callback", defipayCallback).start();
     }
 
     public static boolean customCheck(RouteContext ctx) {
