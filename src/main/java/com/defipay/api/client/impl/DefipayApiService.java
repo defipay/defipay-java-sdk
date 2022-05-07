@@ -52,7 +52,7 @@ public interface DefipayApiService {
     Call<ApiResponse<List<OrderQueryResponse>>> queryOrderList(@Field("offset") Integer offset , @Field("limit") Integer limit);
 
     @GET("/api-service/v1/external/order/getDetail")
-    Call<ApiResponse<OrderQueryResponse>> getOrderDetail(@Query("id") Long id);
+    Call<ApiResponse<OrderQueryResponse>> getOrderDetail(@Query("transNo") String transNo);
 
     @FormUrlEncoded
     @POST("/api-service/v1/external/rate/query")

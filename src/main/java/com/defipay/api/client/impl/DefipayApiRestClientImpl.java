@@ -64,8 +64,8 @@ public class DefipayApiRestClientImpl implements DefipayApiRestClient {
     }
 
     @Override
-    public ApiResponse<OrderQueryResponse> getOrderDetail(Long id) {
-        return executeSync(defipayApiService.getOrderDetail(id));
+    public ApiResponse<OrderQueryResponse> getOrderDetail(String transNo) {
+        return executeSync(defipayApiService.getOrderDetail(transNo));
     }
 
     @Override

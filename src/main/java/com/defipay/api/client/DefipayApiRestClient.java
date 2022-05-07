@@ -27,7 +27,7 @@ public interface DefipayApiRestClient {
 
      ApiResponse<List<OrderQueryResponse>> queryOrderList(Integer offset, Integer limit);
 
-     ApiResponse<OrderQueryResponse> getOrderDetail(Long id);
+     ApiResponse<OrderQueryResponse> getOrderDetail(String transNo);
 
      ApiResponse<RateDTO> queryRate(String base , String quote);
 }

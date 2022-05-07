@@ -92,7 +92,7 @@ public class DefipayJavaApiApplicationTests extends TestCase {
         System.out.println(listApiResponse);
     }
     public void testGetOrderDetail(){
-        ApiResponse<OrderQueryResponse> orderDetail = client.getOrderDetail(253l);
+        ApiResponse<OrderQueryResponse> orderDetail = client.getOrderDetail("5NONKD04");
         System.out.println(orderDetail);
     }
     public void testQueryPayCurrency(){

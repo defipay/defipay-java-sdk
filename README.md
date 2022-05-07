@@ -28,20 +28,7 @@ defipay-java-api 是一個輕量級的 Java 庫，用於與[Defipay API](http://
 
 ## 安裝
 
-步驟 1. 將 JitPack 存儲庫添加到您的構建文件
-
-maven:
-
-```
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-
-步驟 2. 添加依賴項
+步驟 1. 添加依賴項
 
 maven:
 
@@ -52,8 +39,6 @@ maven:
     <version>v0.29</version>
 </dependency>
 ```
-
-
 
 ## 測試
 
@@ -200,7 +185,7 @@ ApiResponse<List<OrderQueryResponse>> listApiResponse3 = client.queryOrderList(1
 
 #### 通過ID查詢獲取已確認的交易記錄
 ```java
-ApiResponse<OrderQueryResponse> orderDetail = client.getOrderDetail(84l);
+ApiResponse<OrderQueryResponse> orderDetail = client.getOrderDetail("UG45OID2");
 ```
 <details>
 <summary>響應視圖</summary>
