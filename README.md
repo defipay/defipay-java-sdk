@@ -34,9 +34,9 @@ maven:
 
 ```
 <dependency>
-    <groupId>com.github.CoboCustody</groupId>
-    <artifactId>cobo-java-api</artifactId>
-    <version>v0.29</version>
+  <groupId>io.github.defipay</groupId>
+  <artifactId>defipay-java-sdk</artifactId>
+  <version>0.0.1</version>
 </dependency>
 ```
 
@@ -55,8 +55,8 @@ maven:
 import LocalSigner;
 
 String[] key = LocalSigner.generateKeyPair();
-Stirng secretKey = key[0];
-Stirng apiKey = key[1];
+String secretKey = key[0];
+String apiKey = key[1];
 ```
 apiKey的使用方法請參考[鏈接](http://doc.defipay.biz/index.html#title1_child2)
 
