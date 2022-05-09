@@ -7,25 +7,17 @@ import com.defipay.api.client.domain.response.*;
 import com.defipay.api.client.domain.response.external.ChainTokenInfoDTO;
 import com.defipay.api.client.domain.response.external.CoinApiAssetInfoDTO;
 import com.defipay.api.client.impl.LocalSigner;
-import com.defipay.api.client.impl.Utils;
-import com.defipay.api.client.security.AuthenticationInterceptor;
 import junit.framework.TestCase;
-import org.apache.commons.lang3.time.DateUtils;
-import retrofit2.Retrofit;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.SimpleFormatter;
 
-import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 public class DefipayJavaApiApplicationTests extends TestCase {
 
-    private final String apiSecret = "2f4aa1551067f7bf50c350f923a3da6cc3e6ba5138f1c743b6f65e6e6b2e78f4";
+    private final String apiSecret = "your api secret";
     private DefipayApiRestClient client;
 
     public void setUp() throws Exception {
@@ -87,13 +79,14 @@ public class DefipayJavaApiApplicationTests extends TestCase {
         ApiResponse<List<CoinApiAssetInfoDTO>> listApiResponse = client.queryBillCurrency(1, 10);
         System.out.println(listApiResponse);
     }
-    public void testQueryOrderList(){
-        ApiResponse<List<CoinApiAssetInfoDTO>> listApiResponse = client.queryBillCurrency(1, 10);
-        System.out.println(listApiResponse);
-    }
     public void testGetOrderDetail(){
         ApiResponse<OrderQueryResponse> orderDetail = client.getOrderDetail("5NONKD04");
         System.out.println(orderDetail);
+    }
+
+    public void testQueryOrderList(){
+        ApiResponse<List<OrderQueryResponse>> listApiResponse = client.queryOrderList(1, 10);
+        System.out.println(listApiResponse);
     }
     public void testQueryPayCurrency(){
         ApiResponse<List<ChainTokenInfoDTO>> listApiResponse1 = client.queryPayCurrency(1, 10);

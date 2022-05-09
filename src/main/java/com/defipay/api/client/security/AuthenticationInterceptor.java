@@ -6,7 +6,6 @@ import okhttp3.*;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -21,6 +20,8 @@ public class AuthenticationInterceptor implements Interceptor {
     private final String defipayPubKey;
 
     private final boolean debug;
+
+    private final String excludePath = "/api-service";
 
     public AuthenticationInterceptor(ApiSigner signer, String defipayPubKey, boolean debug) {
         this.apiKey = signer.getPublicKey();
@@ -75,13 +76,13 @@ public class AuthenticationInterceptor implements Interceptor {
                 .build();
     }
 
-    private Request addHeader(Request original, Request.Builder newRequestBuilder) throws IOException {
+    private Request addHeader(Request original, Request.Builder newRequestBuilder){
         //HTTP_METHOD + | + HTTP_REQUEST_PATH + | + TIMESTAMP + | + PARAMS
         //POST|/v1/custody/test/|1537498830736|amount=100.0&price=100.0&side=buy&symbol=btcusdt&type=limit
         String method = original.method();
         String path = pathSegmentsToString(original.url().pathSegments());
-        if(path.contains("/api-service")){
-            path = path.replace("/api-service","");
+        if(path.contains(excludePath)){
+            path = path.replace(excludePath,"");
         }
         String body = "";
         if ("GET".equals(method)) {
